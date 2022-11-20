@@ -47,11 +47,9 @@ export default function FormSectionBuildingDetails(props: {
                 values={['<= 7 stories', '> 7 stories']}
             />
             {props.value.buildingDetails.age !== null &&
-                [
-                    'before 1930',
-                    '1930 - 1940',
-                    '1940 - 1950',
-                ].includes(props.value.buildingDetails.age) && (
+                ['before 1930', '1930 - 1940', '1940 - 1950'].includes(
+                    props.value.buildingDetails.age
+                ) && (
                     <SelectionInput
                         label='ceiling height'
                         value={props.value.buildingDetails.ceilingHeight}
@@ -91,7 +89,7 @@ export default function FormSectionBuildingDetails(props: {
                     )
                 }
                 values={[
-                    'video intercom AND/OR electric shutters',
+                    'video intercom or electric shutters',
                     'no/only other smart stuff',
                 ]}
             />

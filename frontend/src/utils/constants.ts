@@ -2395,7 +2395,7 @@ export const DEFAULT_SELECTION: CustomTypes.userSelection = {
         buildingHeight: '<= 7 stories',
         ceilingHeight: '<= 2.7m',
         rearBuilding: 'next to street',
-        smartStuff: 'video intercom or electric shutters',
+        smartStuff: 'no/only other smart stuff',
         gallery: 'no gallery',
     },
     bathroom: {
@@ -2411,9 +2411,9 @@ export const DEFAULT_SELECTION: CustomTypes.userSelection = {
     kitchen: {
         location: 'kitchen in dedicated room',
         ownership: 'you own it',
-        hasCookingPlate: 'no',
-        hasFridge: 'no',
-        hasDishwasher: 'no',
+        hasCookingPlate: 'yes',
+        hasFridge: 'yes',
+        hasDishwasher: 'yes',
     },
     heating: {
         heatingType: 'radiator heating',

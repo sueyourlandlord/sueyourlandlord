@@ -80,17 +80,17 @@ export default function Page() {
             sum += 1.28;
         }
 
-        if (selection.flooring.lastRenovation == 'after 2013 (including)') {
+        if (selection.flooring.lastRenovation === 'after 2013 (including)') {
             sum += 0.86;
         }
 
         // balcony
         if (selection.balcony.balconyType != 'no balcony') {
             sum += 0.57;
-            if (selection.balcony.balconyType == '>= 10m2') {
+            if (selection.balcony.balconyType === '>= 10m2') {
                 sum += 0.31;
             }
-            if (selection.balcony.direction == 'points towards S/SW/SE') {
+            if (selection.balcony.direction === 'points towards S/SW/SE') {
                 sum += 0.31;
             } else {
                 sum -= 0.15;
@@ -100,7 +100,7 @@ export default function Page() {
         }
 
         // building
-        if (selection.buildingDetails.gallery == 'gallery') {
+        if (selection.buildingDetails.gallery === 'gallery') {
             sum += 0.72;
         }
         if (
@@ -109,41 +109,40 @@ export default function Page() {
         ) {
             sum += 0.8;
         }
-        if (selection.buildingDetails.rearBuilding == 'rear building') {
+        if (selection.buildingDetails.rearBuilding === 'rear building') {
             sum += 0.34;
         }
-        if (selection.buildingDetails.buildingHeight == '> 7 stories') {
+        if (selection.buildingDetails.buildingHeight === '> 7 stories') {
             sum -= 0.42;
         }
         if (
-            selection.buildingDetails.age == 'before 1930' ||
-            selection.buildingDetails.age == '1930 - 1940' ||
-            selection.buildingDetails.age == '1940 - 1950'
+            selection.buildingDetails.age === 'before 1930' ||
+            selection.buildingDetails.age === '1930 - 1940' ||
+            selection.buildingDetails.age === '1940 - 1950'
         ) {
-            if (selection.buildingDetails.ceilingHeight == '<= 2.7m') {
+            if (selection.buildingDetails.ceilingHeight === '<= 2.7m') {
                 sum -= 1.94;
             }
-            if (selection.buildingDetails.ceilingHeight == '> 2.7m') {
+            if (selection.buildingDetails.ceilingHeight === '> 2.7m') {
                 sum -= 1.4;
             }
         }
 
         // sanitary
-        if (selection.bathroom.towelRadiator == 'exists') {
+        if (selection.bathroom.towelRadiator === 'exists') {
             sum += 0.47; // table 3.6
         }
-        if (selection.bathroom.bathroomSize == '> 6m2') {
+        if (selection.bathroom.bathroomSize === '> 6m2') {
             sum += 0.47; // table 3.6
         }
-        if (selection.bathroom.lastRenovation == 'after 2009 (including)') {
+        if (selection.bathroom.lastRenovation === 'after 2009 (including)') {
             sum += 0.47; // table 3.6
         }
-        if (selection.bathroom.bathType == 'luxury bath') {
+        if (selection.bathroom.bathType === 'luxury bath') {
             sum += 0.47; // table 3.6
         }
-        if (selection.bathroom.bathType == 'luxury bath + luxury bathtub') {
-            sum += 0.47; // table 3.6
-            sum += 1.34; // table 5.4
+        if (selection.bathroom.bathType === 'luxury bath + luxury bathtub') {
+            sum += 0.47 + 1.34; // table 3.6 + table 5.4
         }
 
         // heating
@@ -153,26 +152,26 @@ export default function Page() {
         if (selection.heating.fullHeatingAccess != 'yes') {
             sum -= 1.47;
         }
-        if (selection.heating.temperatureIsAdjustable == 'no') {
+        if (selection.heating.temperatureIsAdjustable === 'no') {
             sum -= 0.43;
         }
-        if (selection.heating.heatingType == 'underfloor heating') {
+        if (selection.heating.heatingType === 'underfloor heating') {
             sum += 0.57;
         }
 
         // kitchen
-        if (selection.kitchen.ownership == 'landlord owns it') {
-            if (selection.kitchen.hasCookingPlate == 'yes') {
+        if (selection.kitchen.ownership === 'landlord owns it') {
+            if (selection.kitchen.hasCookingPlate === 'yes') {
                 sum += 0.43;
             }
-            if (selection.kitchen.hasDishwasher == 'yes') {
+            if (selection.kitchen.hasDishwasher === 'yes') {
                 sum += 0.43;
             }
-            if (selection.kitchen.hasFridge == 'yes') {
+            if (selection.kitchen.hasFridge === 'yes') {
                 sum += 0.43;
             }
         }
-        if (selection.kitchen.location == 'open kitchen') {
+        if (selection.kitchen.location === 'open kitchen') {
             sum += 0.3;
         }
 
