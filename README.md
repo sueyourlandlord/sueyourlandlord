@@ -17,7 +17,7 @@ Renting in Munich can be chaotic. You don't choose an apartment; an apartment ch
 
 It takes the information you have available on your rental property in order to **estimate your maximum lawful rent and helps you take steps towards reaching that amount with your payments**. We then allow the tenants to submit their case to us for further processing and, with the help of lawyers, take further steps, including, for example, taking a landlord to court. This work will be financed by taking a cut of the savings from successful cases.
 
-![SueYourLandlord_Pitch](https://user-images.githubusercontent.com/48807586/202893629-7cfe76b9-15c6-47ba-9275-b3fe2586a359.png)
+![SueYourLandlord_Pitch (1)_page-0003](https://user-images.githubusercontent.com/29046316/202933248-86500cc5-488b-4001-9764-38595574b842.jpg)
 
 ## How we built it
 
