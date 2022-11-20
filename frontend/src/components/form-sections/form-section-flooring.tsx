@@ -17,12 +17,7 @@ export default function FormSectionFlooring(props: {
                         defaultsDeep({ flooring: { quality: v } }, props.value)
                     )
                 }
-                values={[
-                    '100% HQ',
-                    'less than 50% HQ',
-                    'at least one full HQ',
-                    'other',
-                ]}
+                values={['< 50% HQ', '50 - 99% HQ', '100% HQ']}
             />
             <SelectionInput
                 label='last renovation'

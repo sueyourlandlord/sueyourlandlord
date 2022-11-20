@@ -72,15 +72,12 @@ export default function Page() {
         sum = last_result.prices[selection.buildingDetails.age];
 
         // flooring
-        switch (selection.flooring.quality) {
-            case '100% HQ':
-                sum += 1.28;
-            case 'less than 50% HQ':
-                sum -= 1.19;
-            case 'other':
-                sum -= 0.35;
-            case 'at least one full HQ':
-                sum += 0.53;
+        if (selection.flooring.quality === '< 50% HQ') {
+            sum -= 1.19;
+        } else if (selection.flooring.quality === '50 - 99% HQ') {
+            sum += 0.09; // average of table 5.3a and 5.3.b
+        } else if (selection.flooring.quality === '100% HQ') {
+            sum += 1.28;
         }
 
         if (selection.flooring.lastRenovation == 'after 2013 (including)') {
@@ -89,6 +86,7 @@ export default function Page() {
 
         // balcony
         if (selection.balcony.balconyType != 'no balcony') {
+            sum += 0.57;
             if (selection.balcony.balconyType == '>= 10m2') {
                 sum += 0.31;
             }
@@ -97,6 +95,8 @@ export default function Page() {
             } else {
                 sum -= 0.15;
             }
+        } else {
+            sum -= 0.44;
         }
 
         // building
@@ -105,7 +105,7 @@ export default function Page() {
         }
         if (
             selection.buildingDetails.smartStuff ==
-            'video intercom AND/OR electric shutters'
+            'video intercom or electric shutters'
         ) {
             sum += 0.8;
         }
@@ -130,19 +130,20 @@ export default function Page() {
 
         // sanitary
         if (selection.bathroom.towelRadiator == 'exists') {
-            sum += 0.47;
+            sum += 0.47; // table 3.6
         }
         if (selection.bathroom.bathroomSize == '> 6m2') {
-            sum += 0.47;
+            sum += 0.47; // table 3.6
         }
         if (selection.bathroom.lastRenovation == 'after 2009 (including)') {
-            sum += 0.47;
+            sum += 0.47; // table 3.6
         }
         if (selection.bathroom.bathType == 'luxury bath') {
-            sum += 0.47;
+            sum += 0.47; // table 3.6
         }
         if (selection.bathroom.bathType == 'luxury bath + luxury bathtub') {
-            sum += 1.34;
+            sum += 0.47; // table 3.6
+            sum += 1.34; // table 5.4
         }
 
         // heating

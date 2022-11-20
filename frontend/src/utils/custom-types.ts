@@ -19,7 +19,7 @@ namespace CustomTypes {
             ceilingHeight: '<= 2.7m' | '> 2.7m';
             rearBuilding: 'rear building' | 'next to street';
             smartStuff:
-                | 'video intercom AND/OR electric shutters'
+                | 'video intercom or electric shutters'
                 | 'no/only other smart stuff';
             gallery: 'gallery' | 'no gallery';
         };
@@ -33,11 +33,7 @@ namespace CustomTypes {
             lastRenovation: 'before 2009' | 'after 2009 (including)';
         };
         flooring: {
-            quality:
-                | '100% HQ'
-                | 'less than 50% HQ'
-                | 'at least one full HQ'
-                | 'other';
+            quality: '< 50% HQ' | '50 - 99% HQ' | '100% HQ';
             lastRenovation: 'before 2013' | 'after 2013 (including)';
         };
         kitchen: {
