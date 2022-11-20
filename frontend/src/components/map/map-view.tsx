@@ -50,7 +50,7 @@ const MapView = (props: { lat: number; lon: number }) => {
                     attribution={
                         '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
                     }
-                    accessToken={'ACCESS_TOKEN'}
+                    accessToken={'ef46c64d-29e0-495e-9647-f8dcc2bf46c2'}
                 />
                 {/* @ts-ignore */}
                 <GeoJSON data={AREA_QUALITY_POLYGONS} style={overlayOptFunc} />
