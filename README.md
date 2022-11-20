@@ -15,7 +15,7 @@ Renting in Munich can be chaotic. You don't choose an apartment; an apartment ch
 ## What it does
 It takes the information you have available on your rental property in order to **estimate your maximum lawful rent and helps you take steps towards reaching that amount with your payments**. We then allow the tenants to submit their case to us for further processing and, with the help of lawyers, take further steps, including, for example, taking a landlord to court. This work will be financed by taking a cut of the savings from successful cases. 
 
-![SueYourLandlord_Pitch_page-0003](https://user-images.githubusercontent.com/29046316/202885684-28baa70f-6f65-4eb4-9a5c-22b4ed7d52e0.jpg)
+![SueYourLandlord_Pitch](https://user-images.githubusercontent.com/48807586/202893629-7cfe76b9-15c6-47ba-9275-b3fe2586a359.png)
 
 ## How we built it
 We used the data from the Mietspiegel and geo-data from the [Open Data project](https://opendata.muenchen.de/). Using this, along with the rental laws and some statistics, we can calculate potential maximum rents for apartments. The web app was built using React.
