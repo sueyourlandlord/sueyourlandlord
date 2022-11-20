@@ -49,27 +49,25 @@ export default function FormSectionBathroom(props: {
                 }
                 values={['exists', 'missing']}
             />
-            {props.value.buildingDetails.age !== null &&
-                [
-                    'before 1930',
-                    '1930 - 1940',
-                    '1940 - 1950',
-                    '1950 - 1960',
-                ].includes(props.value.buildingDetails.age) && (
-                    <SelectionInput
-                        label='last renovation'
-                        value={props.value.bathroom.lastRenovation}
-                        setValue={v =>
-                            props.setValue(
-                                defaultsDeep(
-                                    { bathroom: { lastRenovation: v } },
-                                    props.value
-                                )
+            {(props.value.buildingDetails.age === 'before 1930' ||
+                props.value.buildingDetails.age === '1930 - 1940' ||
+                props.value.buildingDetails.age === '1940 - 1950' ||
+                props.value.buildingDetails.age === '1950 - 1960' ||
+                props.value.buildingDetails.age === '1960 - 1970') && (
+                <SelectionInput
+                    label='last renovation'
+                    value={props.value.bathroom.lastRenovation}
+                    setValue={v =>
+                        props.setValue(
+                            defaultsDeep(
+                                { bathroom: { lastRenovation: v } },
+                                props.value
                             )
-                        }
-                        values={['before 2009', 'after 2009 (included)']}
-                    />
-                )}
+                        )
+                    }
+                    values={['before 2009', 'after 2009 (included)']}
+                />
+            )}
         </FormSection>
     );
 }

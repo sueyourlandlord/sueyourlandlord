@@ -30,11 +30,11 @@ namespace CustomTypes {
                 | 'luxury bath + luxury bathtub';
             bathroomSize: '<= 6m2' | '> 6m2';
             towelRadiator: 'exists' | 'missing';
-            lastRenovation: 'before 2009' | 'after 2009 (including)';
+            lastRenovation: 'before 2009' | 'after 2009 (included)';
         };
         flooring: {
             quality: '< 50% HQ' | '50 - 99% HQ' | '100% HQ';
-            lastRenovation: 'before 2013' | 'after 2013 (including)';
+            lastRenovation: 'before 2013' | 'after 2013 (included)';
         };
         kitchen: {
             location: 'kitchen in dedicated room' | 'open kitchen';

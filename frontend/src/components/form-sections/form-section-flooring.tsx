@@ -30,7 +30,7 @@ export default function FormSectionFlooring(props: {
                         )
                     )
                 }
-                values={['before 2013', 'after 2013 (including)']}
+                values={['before 2013', 'after 2013 (included)']}
             />
         </FormSection>
     );

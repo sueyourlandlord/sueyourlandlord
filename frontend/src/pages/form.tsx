@@ -99,7 +99,7 @@ export default function Page() {
             sum += 1.28;
         }
 
-        if (selection.flooring.lastRenovation === 'after 2013 (including)') {
+        if (selection.flooring.lastRenovation === 'after 2013 (included)') {
             sum += 0.86;
         }
 
@@ -154,8 +154,16 @@ export default function Page() {
         if (selection.bathroom.bathroomSize === '> 6m2') {
             sum += 0.47; // table 3.6
         }
-        if (selection.bathroom.lastRenovation === 'after 2009 (including)') {
-            sum += 0.47; // table 3.6
+        if (
+            selection.buildingDetails.age === 'before 1930' ||
+            selection.buildingDetails.age === '1930 - 1940' ||
+            selection.buildingDetails.age === '1940 - 1950' ||
+            selection.buildingDetails.age === '1950 - 1960' ||
+            selection.buildingDetails.age === '1960 - 1970'
+        ) {
+            if (selection.bathroom.lastRenovation == 'after 2009 (included)') {
+                sum += 0.47; // table 3.6
+            }
         }
         if (selection.bathroom.bathType === 'luxury bath') {
             sum += 0.47; // table 3.6
