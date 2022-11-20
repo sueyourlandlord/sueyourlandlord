@@ -5,7 +5,7 @@
 -   Devpost submission on https://devpost.com/software/sue-your-landlord<br/>
 -   App usable on https://www.sueyourlandlord.org/
 
-**Team Members:** Débora Oliveira (https://github.com/debOliveira), Max Hochlenert (https://github.com/drdelayismysenpai), Moritz Makowski (https://github.com/dostuffthatmatters), Ojas Mandlekar (https://github.com/ojas121)
+**Team Members:** Débora Oliveira (https://github.com/debOliveira), Max Hochlenert (https://github.com/drdelayismysenpai), Moritz Makowski (https://github.com/dostuffthatmatters), Ojas Mandlekar (https://github.com/ojas121).
 
 ## Inspiration
 
