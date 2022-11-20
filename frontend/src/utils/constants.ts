@@ -2395,7 +2395,7 @@ export const DEFAULT_SELECTION: CustomTypes.userSelection = {
         buildingHeight: '<= 7 stories',
         ceilingHeight: '<= 2.7m',
         rearBuilding: 'next to street',
-        smartStuff: 'video intercom AND/OR electric shutters',
+        smartStuff: 'video intercom or electric shutters',
         gallery: 'no gallery',
     },
     bathroom: {
