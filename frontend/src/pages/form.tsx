@@ -52,7 +52,10 @@ export default function Page() {
         }
     }, [query, userSelection, coords]);
 
-    function getTotalSum(selection: CustomTypes.userSelection): number | null {
+    function getTotalSum(
+        selection: CustomTypes.userSelection,
+        zoneNumber: string
+    ): number | null {
         let sum = 0;
         if (selection.mandatory.size === null) {
             return null;
@@ -70,6 +73,22 @@ export default function Page() {
             return null;
         }
         sum = last_result.prices[selection.buildingDetails.age];
+
+        if (zoneNumber === '1') {
+            sum += 2.67; // central best
+        }
+        if (zoneNumber === '2') {
+            sum += 1.54; // central good
+        }
+        if (zoneNumber === '3') {
+            sum += 0.9; // central avg.
+        }
+        if (zoneNumber === '4') {
+            sum += 0.64; // good
+        }
+        if (zoneNumber === '0' || zoneNumber === '5') {
+            sum += 0; // unknown || avg.
+        }
 
         // flooring
         if (selection.flooring.quality === '< 50% HQ') {
@@ -185,9 +204,9 @@ export default function Page() {
 
     useEffect(() => {
         if (userSelection !== null) {
-            setTotalSum(getTotalSum(userSelection));
+            setTotalSum(getTotalSum(userSelection, zoneNumber));
         }
-    }, [userSelection]);
+    }, [userSelection, zoneNumber]);
 
     if (userSelection === null) {
         ('loading');
