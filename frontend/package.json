@@ -4,10 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
-        "export": "next export"
+        "build": "next build && next export",
+        "lint": "next lint"
     },
     "dependencies": {
         "@next/font": "^13.0.4",

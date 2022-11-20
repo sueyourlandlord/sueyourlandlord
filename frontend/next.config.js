@@ -7,4 +7,7 @@ module.exports = {
             { loader: '@next/font/google', options: { subsets: ['latin'] } },
         ],
     },
+    images: {
+        unoptimized: true,
+    },
 };
