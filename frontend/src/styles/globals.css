@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-row-center {
+    @apply flex flex-row items-center justify-center;
+}
+
+.flex-col-center {
+    @apply flex flex-col items-center justify-center;
+}
+
+.no-selection {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
