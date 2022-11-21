@@ -1,11 +1,12 @@
 # 🧑‍⚖️ Sue Your Landlord
 
-[HackaTUM 2022](https://hackatum22.devpost.com/) Project<br/>
+Visit https://www.sueyourlandlord.org/
 
--   Devpost submission on https://devpost.com/software/sue-your-landlord<br/>
--   App usable on https://www.sueyourlandlord.org/
-
-**Team Members:** Débora Oliveira (https://github.com/debOliveira), Max Hochlenert (https://github.com/drdelayismysenpai), Moritz Makowski (https://github.com/dostuffthatmatters), Ojas Mandlekar (https://github.com/ojas121).
+**Team Members:**<br/>
+Débora Oliveira (https://github.com/debOliveira)<br/>
+Max Hochlenert (https://github.com/drdelayismysenpai)<br/>
+Moritz Makowski (https://github.com/dostuffthatmatters)<br/>
+Ojas Mandlekar (https://github.com/ojas121).
 
 ## Inspiration
 
