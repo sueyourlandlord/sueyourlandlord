@@ -1,6 +1,8 @@
 # 🧑‍⚖️ Sue Your Landlord
 
-Visit https://www.sueyourlandlord.org/
+**Only works in Munich, Germany!** Since every City/State has their own way of calculating the legal rent limit, [contact us](mailto:info@sueyourlandlord.org) if you want to make it available in your location.
+
+**Visit https://www.sueyourlandlord.org/ for the Munich based version.**
 
 **Team Members:**<br/>
 Débora Oliveira (https://github.com/debOliveira)<br/>
