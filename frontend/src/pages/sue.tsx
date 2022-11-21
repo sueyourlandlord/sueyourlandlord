@@ -34,7 +34,7 @@ export default function Page() {
                 <p className='px-4 pt-3 pb-4 italic'>
                     Are you a law firm?{' '}
                     <a
-                        href='https://github.com/dostuffthatmatters/sueyourlandlord'
+                        href='https://github.com/sueyourlandlord'
                         className='font-medium text-blue-600 underline'
                         target='_self'
                     >
