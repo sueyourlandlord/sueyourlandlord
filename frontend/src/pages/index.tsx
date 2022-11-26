@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import TextInput from '../components/form-elements/text-input';
 import NumberInput from '../components/form-elements/number-input';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function Page() {
     const [address, setAddress] = useState('');
     const [size, setSize] = useState<number | null>(null);
 
     const buttonIsDisabled = address === '' || size === null;
+
+    const { locale } = useRouter();
 
     const triggerRequest = async () => {
         const response = await fetch(
@@ -38,15 +41,19 @@ export default function Page() {
                 />
                 <div className='z-10 p-6 bg-white flex flex-col items-end justify-center rounded-lg gap-y-4 w-[32rem] shadow-lg'>
                     <h1 className='w-full text-3xl font-medium text-center'>
-                        Is your rent too high?
+                        {locale === 'de' ? 'Miete zu hoch?' : 'Rent too high?'}
                     </h1>
                     <TextInput
-                        label='Address'
+                        label={locale === 'de' ? 'Adresse' : 'Address'}
                         value={address}
                         setValue={setAddress}
                     />
                     <NumberInput
-                        label='Apartment Size [m2] (20 - 160)'
+                        label={
+                            locale === 'de'
+                                ? 'Wohnungsgröße [m2] (20 - 160)'
+                                : 'Apartment Size [m2] (20 - 160)'
+                        }
                         value={size}
                         setValue={setSize}
                     />
@@ -59,7 +66,9 @@ export default function Page() {
                         }
                         onClick={buttonIsDisabled ? () => {} : triggerRequest}
                     >
-                        Calculate limit
+                        {locale === 'de'
+                            ? 'Maximalbetrag berechnen'
+                            : 'Calculate limit'}
                     </button>
                 </div>
             </div>
