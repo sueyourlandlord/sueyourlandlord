@@ -2432,11 +2432,17 @@ export const DEFAULT_SELECTION: CustomTypes.userSelection = {
 };
 
 export const GERMAN_TRANSLATIONS: { [key: string]: string } = {
+    'Rent too high?': 'Miete zu hoch?',
     address: 'Adresse',
     'apartment size [m2] (between 20 and 160 m2)':
         'Wohnungsgröße [m2] (zwischen 20 und 160 m2)',
     'calculate limit': 'Maximalbetrag berechnen',
     'no matches': 'keine Treffer',
+
+    'Change address': 'Adresse ändern',
+    'Limit of Allowed Rent (Estimate)':
+        'Maximal erlaubte Kaltmiete (Schätzung)',
+    'Please enter size': 'Bitte Größe eingeben',
     'central best': 'zentral beste',
     'central good': 'zentral gut',
     'central avg': 'zentral durchschnittlich',
@@ -2478,13 +2484,14 @@ export const GERMAN_TRANSLATIONS: { [key: string]: string } = {
     gallery: 'Galerie',
     'no gallery': 'keine Galerie',
     flooring: 'Fußboden',
-    'quality (HQ = High Quality = Wood, Stone, etc.)': '',
+    'quality (HQ = High Quality = Wood, Stone, etc.)':
+        'Qualität (HQ = Hohe Qualität = Parkett, Laminat, Stein, etc.)',
     'before 2013': 'vor 2013',
     'after 2013 (included)': 'ab 2013',
     heating: 'Heizung',
     'underfloor heating': 'Fußbodenheizung',
     'radiator heating': 'Heizkörper',
-    'heating in every room': 'jeder Raum ist beheizts',
+    'heating in every room': 'jeder Raum ist beheizt',
     yes: 'ja',
     no: 'nein',
     'warm water in both kitchen and bathrooms': 'Warmwasser in Bad und Küche',

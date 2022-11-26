@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 export default function Page() {
-    const { locale } = useRouter();
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
 
     return (
         <div className='w-full min-h-screen bg-gray-100 flex-col-center'>
@@ -16,7 +17,7 @@ export default function Page() {
                     className='w-full'
                 />
                 <h1 className='w-full pt-4 my-3 text-3xl text-center font-regular'>
-                    {locale === 'de' && (
+                    {pageIsGerman && (
                         <>
                             You Can{' '}
                             <span className='font-bold'>
@@ -24,7 +25,7 @@ export default function Page() {
                             </span>
                         </>
                     )}
-                    {locale === 'en' && (
+                    {!pageIsGerman && (
                         <>
                             Sie können Ihre{' '}
                             <span className='font-bold'>
@@ -32,10 +33,9 @@ export default function Page() {
                             </span>
                         </>
                     )}
-                    {locale === 'de' && <></>}
                 </h1>
                 <p className='px-4 pt-3 pb-2'>
-                    {locale === 'de' && (
+                    {pageIsGerman && (
                         <>
                             Kontaktieren Sie Ihre örtliche
                             Mieter:innen&shy;vereini&shy;gung wie z.B. den{' '}
@@ -53,7 +53,7 @@ export default function Page() {
                             )
                         </>
                     )}
-                    {locale === 'en' && (
+                    {!pageIsGerman && (
                         <>
                             Get in touch with a local tenant association like{' '}
                             <span className='font-medium'>
@@ -72,7 +72,7 @@ export default function Page() {
                     )}
                 </p>
                 <p className='px-4 pt-3 pb-4 italic'>
-                    {locale === 'de' && (
+                    {pageIsGerman && (
                         <>
                             Sie sind Teil einer Mietrechtskanzlei?{' '}
                             <a
@@ -84,7 +84,7 @@ export default function Page() {
                             </a>
                         </>
                     )}
-                    {locale === 'en' && (
+                    {!pageIsGerman && (
                         <>
                             Are you a law firm?{' '}
                             <a

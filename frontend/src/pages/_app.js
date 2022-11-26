@@ -10,7 +10,10 @@ const rubik = Rubik({
 });
 
 export default function App({ Component, pageProps }) {
-    const { pathname, query, asPath, locale } = useRouter();
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
+
+    console.log({ router });
 
     return (
         <main className={`${rubik.variable} font-sans relative`}>
@@ -21,12 +24,11 @@ export default function App({ Component, pageProps }) {
             </Head>
             <div className='absolute top-0 right-0 z-50 overflow-hidden shadow rounded-bl-md flex-row-center'>
                 <Link
-                    href={{ pathname, query }}
-                    asPath={asPath}
-                    locale={'de'}
+                    href={router.pathname.replace('[locale]', 'de')}
+                    query={{ ...router.query, locale: 'de' }}
                     className={
                         'w-10 h-10 leading-10 text-center ' +
-                        (locale === 'de'
+                        (pageIsGerman
                             ? 'bg-white text-black font-semibold'
                             : 'bg-gray-300 text-gray-700')
                     }
@@ -34,12 +36,11 @@ export default function App({ Component, pageProps }) {
                     de
                 </Link>
                 <Link
-                    href={{ pathname, query }}
-                    asPath={asPath}
-                    locale={'en'}
+                    href={router.pathname.replace('[locale]', 'en')}
+                    query={{ ...router.query, locale: 'en' }}
                     className={
                         'w-10 h-10 leading-10 text-center ' +
-                        (locale === 'en'
+                        (!pageIsGerman
                             ? 'bg-white text-black font-semibold'
                             : 'bg-gray-300 text-gray-700')
                     }

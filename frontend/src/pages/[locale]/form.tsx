@@ -1,31 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import CustomTypes from '../utils/custom-types';
-import FormSectionMandatory from '../components/form-sections/form-section-mandatory';
-import FormSectionBuildingDetails from '../components/form-sections/form-section-building-details';
-import FormSectionBathroom from '../components/form-sections/form-section-bathroom';
-import FormSectionFlooring from '../components/form-sections/form-section-flooring';
-import FormSectionKitchen from '../components/form-sections/form-section-kitchen';
-import FormSectionHeating from '../components/form-sections/form-section-heating';
-import FormSectionBalcony from '../components/form-sections/form-section-balcony';
-import ShowTotalSum from '../components/form-elements/show-total-sum';
+import CustomTypes from '../../utils/custom-types';
+import FormSectionMandatory from '../../components/form-sections/form-section-mandatory';
+import FormSectionBuildingDetails from '../../components/form-sections/form-section-building-details';
+import FormSectionBathroom from '../../components/form-sections/form-section-bathroom';
+import FormSectionFlooring from '../../components/form-sections/form-section-flooring';
+import FormSectionKitchen from '../../components/form-sections/form-section-kitchen';
+import FormSectionHeating from '../../components/form-sections/form-section-heating';
+import FormSectionBalcony from '../../components/form-sections/form-section-balcony';
+import ShowTotalSum from '../../components/form-elements/show-total-sum';
 import dynamic from 'next/dynamic';
-import selectRentZone from '../utils/select-rent-zone';
+import selectRentZone from '../../utils/select-rent-zone';
 import { filter, defaultsDeep, get } from 'lodash';
 import {
     RENT_AGE_SIZE,
     DEFAULT_SELECTION,
     GERMAN_TRANSLATIONS,
-} from '../utils/constants';
+} from '../../utils/constants';
 import Link from 'next/link';
 
-const MapWithNoSSR = dynamic(() => import('../components/map/map-view'), {
+const MapWithNoSSR = dynamic(() => import('../../components/map/map-view'), {
     ssr: false,
 });
 
 export default function Page() {
-    const { query, locale } = useRouter();
-
     const [userSelection, setUserSelection] =
         useState<CustomTypes.userSelection>(DEFAULT_SELECTION);
 
@@ -35,8 +33,10 @@ export default function Page() {
         null
     );
 
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
     const getLocalizedLabel = (label: string): string => {
-        if (locale === 'de') {
+        if (pageIsGerman) {
             return get(GERMAN_TRANSLATIONS, label, label);
         }
         return label;
@@ -44,14 +44,14 @@ export default function Page() {
 
     useEffect(() => {
         if (
-            typeof query.lat === 'string' &&
-            typeof query.lon === 'string' &&
-            typeof query.size === 'string' &&
+            typeof router.query.lat === 'string' &&
+            typeof router.query.lon === 'string' &&
+            typeof router.query.size === 'string' &&
             coords === null
         ) {
-            const initialLat = parseFloat(query.lat);
-            const initialLon = parseFloat(query.lon);
-            const initialSize = parseInt(query.size);
+            const initialLat = parseFloat(router.query.lat);
+            const initialLon = parseFloat(router.query.lon);
+            const initialSize = parseInt(router.query.size);
             setZoneNumber(selectRentZone(initialLat, initialLon));
             setUserSelection(
                 defaultsDeep(
@@ -61,7 +61,7 @@ export default function Page() {
             );
             setCoords({ lat: initialLat, lon: initialLon });
         }
-    }, [query, userSelection, coords]);
+    }, [router.query, userSelection, coords]);
 
     function getTotalSum(
         selection: CustomTypes.userSelection,

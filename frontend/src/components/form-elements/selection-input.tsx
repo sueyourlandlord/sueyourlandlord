@@ -8,10 +8,10 @@ export default function SelectionInput(props: {
     values: string[];
     setValue(v: string | null): void;
 }) {
-    const { locale } = useRouter();
-
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
     const getLocalizedLabel = (label: string): string => {
-        if (locale === 'de') {
+        if (pageIsGerman) {
             return get(GERMAN_TRANSLATIONS, label, label);
         }
         return label;
@@ -20,7 +20,7 @@ export default function SelectionInput(props: {
     return (
         <div>
             <label className='block text-sm font-medium text-gray-700'>
-                {props.label}
+                {getLocalizedLabel(props.label)}
             </label>
             <div className='inline-flex flex-wrap'>
                 {props.values.map(v => (

@@ -7,8 +7,6 @@ export default function NumberInput(props: {
     value: number | null;
     setValue(v: number | null): void;
 }) {
-    const { locale } = useRouter();
-
     function parseIntInput(v: string): number | null {
         let out = parseInt(v);
         if (isNaN(out)) {
@@ -17,8 +15,10 @@ export default function NumberInput(props: {
         return out;
     }
 
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
     const getLocalizedLabel = (label: string): string => {
-        if (locale === 'de') {
+        if (pageIsGerman) {
             return get(GERMAN_TRANSLATIONS, label, label);
         }
         return label;

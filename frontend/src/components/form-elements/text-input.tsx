@@ -7,10 +7,10 @@ export default function TextInput(props: {
     value: string;
     setValue(v: string): void;
 }) {
-    const { locale } = useRouter();
-
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
     const getLocalizedLabel = (label: string): string => {
-        if (locale === 'de') {
+        if (pageIsGerman) {
             return get(GERMAN_TRANSLATIONS, label, label);
         }
         return label;

@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
-import TextInput from '../components/form-elements/text-input';
-import NumberInput from '../components/form-elements/number-input';
+import TextInput from '../../components/form-elements/text-input';
+import NumberInput from '../../components/form-elements/number-input';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { GERMAN_TRANSLATIONS } from '../utils/constants';
+import { GERMAN_TRANSLATIONS } from '../../utils/constants';
 import { get } from 'lodash';
+
+export async function getStaticPaths() {
+    return {
+        paths: [{ params: { locale: 'de' } }, { params: { locale: 'en' } }],
+        fallback: false,
+    };
+}
+
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
 
 export default function Page() {
     const [address, setAddress] = useState('');
     const [size, setSize] = useState<number | null>(null);
     const buttonIsDisabled = address === '' || size === null;
-    const { locale } = useRouter();
 
+    const router = useRouter();
+    const pageIsGerman = router.query.locale === 'de';
     const getLocalizedLabel = (label: string): string => {
-        if (locale === 'de') {
+        if (pageIsGerman) {
             return get(GERMAN_TRANSLATIONS, label, label);
         }
         return label;
@@ -33,7 +47,10 @@ export default function Page() {
 
         const lat = locationMatches[0].lat;
         const lon = locationMatches[0].lon;
-        window.open(`/form?lat=${lat}&lon=${lon}&size=${size}`, '_self');
+        window.open(
+            `/${router.query.locale}/form?lat=${lat}&lon=${lon}&size=${size}`,
+            '_self'
+        );
     };
 
     return (
@@ -48,7 +65,7 @@ export default function Page() {
                 />
                 <div className='z-10 p-6 bg-white flex flex-col items-end justify-center rounded-lg gap-y-4 w-[32rem] shadow-lg'>
                     <h1 className='w-full text-3xl font-medium text-center'>
-                        {locale === 'de' ? 'Miete zu hoch?' : 'Rent too high?'}
+                        {getLocalizedLabel('Rent too high?')}
                     </h1>
                     <TextInput
                         label='address'
