@@ -1,6 +1,8 @@
 import '../styles/globals.css';
 import { Rubik } from '@next/font/google';
 import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const rubik = Rubik({
     subsets: ['latin'],
@@ -8,13 +10,43 @@ const rubik = Rubik({
 });
 
 export default function App({ Component, pageProps }) {
+    const { pathname, query, asPath, locale } = useRouter();
+
     return (
-        <main className={`${rubik.variable} font-sans`}>
+        <main className={`${rubik.variable} font-sans relative`}>
             <Head>
                 <title>Sue Your Landlord</title>
                 <meta name='description' content='online fast!' />
                 <link rel='icon' href='/favicon.ico' type='image/x-icon' />
             </Head>
+            <div className='absolute top-0 right-0 z-50 overflow-hidden shadow rounded-bl-md flex-row-center'>
+                <Link
+                    href={{ pathname, query }}
+                    asPath={asPath}
+                    locale={'de'}
+                    className={
+                        'w-10 h-10 leading-10 text-center ' +
+                        (locale === 'de'
+                            ? 'bg-white text-black font-semibold'
+                            : 'bg-gray-300 text-gray-700')
+                    }
+                >
+                    de
+                </Link>
+                <Link
+                    href={{ pathname, query }}
+                    asPath={asPath}
+                    locale={'en'}
+                    className={
+                        'w-10 h-10 leading-10 text-center ' +
+                        (locale === 'en'
+                            ? 'bg-white text-black font-semibold'
+                            : 'bg-gray-300 text-gray-700')
+                    }
+                >
+                    en
+                </Link>
+            </div>
             <Component {...pageProps} />
         </main>
     );
