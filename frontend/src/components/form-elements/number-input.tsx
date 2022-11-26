@@ -1,8 +1,14 @@
+import { get } from 'lodash';
+import { useRouter } from 'next/router';
+import { GERMAN_TRANSLATIONS } from '../../utils/constants';
+
 export default function NumberInput(props: {
     label: string;
     value: number | null;
     setValue(v: number | null): void;
 }) {
+    const { locale } = useRouter();
+
     function parseIntInput(v: string): number | null {
         let out = parseInt(v);
         if (isNaN(out)) {
@@ -11,13 +17,17 @@ export default function NumberInput(props: {
         return out;
     }
 
+    const getLocalizedLabel = (label: string): string => {
+        if (locale === 'de') {
+            return get(GERMAN_TRANSLATIONS, label, label);
+        }
+        return label;
+    };
+
     return (
         <div className='w-full'>
-            <label
-                htmlFor='email'
-                className='block text-sm font-medium text-gray-700'
-            >
-                {props.label}
+            <label className='block text-sm font-medium text-gray-700'>
+                {getLocalizedLabel(props.label)}
             </label>
             <div className='w-full mt-1'>
                 <input

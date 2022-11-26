@@ -7,8 +7,11 @@ import {
     IconMicrowave,
     IconWood,
 } from '@tabler/icons';
+import { get } from 'lodash';
+import { useRouter } from 'next/router';
 
 import React, { useState } from 'react';
+import { GERMAN_TRANSLATIONS } from '../../utils/constants';
 import CustomTypes from '../../utils/custom-types';
 
 const sectionStyling = {
@@ -44,6 +47,15 @@ export default function FormSection(props: {
 }) {
     const [collapsed, setCollapsed] = useState(true);
 
+    const { locale } = useRouter();
+
+    const getLocalizedLabel = (label: string): string => {
+        if (locale === 'de') {
+            return get(GERMAN_TRANSLATIONS, label, label);
+        }
+        return label;
+    };
+
     return (
         <div
             className={
@@ -66,7 +78,7 @@ export default function FormSection(props: {
                 >
                     <div>{sectionStyling[props.label].icon}</div>
                     <div className={'block mx-2 text-lg font-medium uppercase'}>
-                        {props.label}
+                        {getLocalizedLabel(props.label)}
                     </div>
                     <div className='flex-grow' />
                     <IconChevronDown

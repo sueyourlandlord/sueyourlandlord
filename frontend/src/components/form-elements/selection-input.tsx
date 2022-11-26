@@ -1,9 +1,22 @@
+import { get } from 'lodash';
+import { useRouter } from 'next/router';
+import { GERMAN_TRANSLATIONS } from '../../utils/constants';
+
 export default function SelectionInput(props: {
     label: string;
     value: string | null;
     values: string[];
     setValue(v: string | null): void;
 }) {
+    const { locale } = useRouter();
+
+    const getLocalizedLabel = (label: string): string => {
+        if (locale === 'de') {
+            return get(GERMAN_TRANSLATIONS, label, label);
+        }
+        return label;
+    };
+
     return (
         <div>
             <label className='block text-sm font-medium text-gray-700'>
@@ -22,7 +35,7 @@ export default function SelectionInput(props: {
                         }
                         onClick={() => props.setValue(v)}
                     >
-                        {v}
+                        {getLocalizedLabel(v)}
                     </div>
                 ))}
             </div>

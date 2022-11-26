@@ -34,7 +34,7 @@ export default function FormSectionBuildingDetails(props: {
                 ]}
             />
             <SelectionInput
-                label='building type'
+                label='type'
                 value={props.value.buildingDetails.buildingHeight}
                 setValue={v =>
                     props.setValue(

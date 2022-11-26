@@ -34,7 +34,6 @@ const MapView = (props: { lat: number; lon: number }) => {
     };
 
     const displayMap = useMemo(() => {
-        console.log('SOME');
         return (
             <MapContainer
                 center={new LatLng(props.lat, props.lon)}

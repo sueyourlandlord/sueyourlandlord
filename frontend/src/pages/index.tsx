@@ -3,14 +3,21 @@ import TextInput from '../components/form-elements/text-input';
 import NumberInput from '../components/form-elements/number-input';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { GERMAN_TRANSLATIONS } from '../utils/constants';
+import { get } from 'lodash';
 
 export default function Page() {
     const [address, setAddress] = useState('');
     const [size, setSize] = useState<number | null>(null);
-
     const buttonIsDisabled = address === '' || size === null;
-
     const { locale } = useRouter();
+
+    const getLocalizedLabel = (label: string): string => {
+        if (locale === 'de') {
+            return get(GERMAN_TRANSLATIONS, label, label);
+        }
+        return label;
+    };
 
     const triggerRequest = async () => {
         const response = await fetch(
@@ -20,7 +27,7 @@ export default function Page() {
         const locationMatches = await response.json();
 
         if (locationMatches.length == 0) {
-            alert('no matches');
+            alert(getLocalizedLabel('no matches'));
             return;
         }
 
@@ -44,16 +51,12 @@ export default function Page() {
                         {locale === 'de' ? 'Miete zu hoch?' : 'Rent too high?'}
                     </h1>
                     <TextInput
-                        label={locale === 'de' ? 'Adresse' : 'Address'}
+                        label='address'
                         value={address}
                         setValue={setAddress}
                     />
                     <NumberInput
-                        label={
-                            locale === 'de'
-                                ? 'Wohnungsgröße [m2] (20 - 160)'
-                                : 'Apartment Size [m2] (20 - 160)'
-                        }
+                        label='apartment size [m2] (between 20 and 160 m2)'
                         value={size}
                         setValue={setSize}
                     />
@@ -66,9 +69,7 @@ export default function Page() {
                         }
                         onClick={buttonIsDisabled ? () => {} : triggerRequest}
                     >
-                        {locale === 'de'
-                            ? 'Maximalbetrag berechnen'
-                            : 'Calculate limit'}
+                        {getLocalizedLabel('calculate limit')}
                     </button>
                 </div>
             </div>

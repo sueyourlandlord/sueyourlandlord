@@ -11,8 +11,12 @@ import FormSectionBalcony from '../components/form-sections/form-section-balcony
 import ShowTotalSum from '../components/form-elements/show-total-sum';
 import dynamic from 'next/dynamic';
 import selectRentZone from '../utils/select-rent-zone';
-import { filter, defaultsDeep } from 'lodash';
-import { RENT_AGE_SIZE, DEFAULT_SELECTION } from '../utils/constants';
+import { filter, defaultsDeep, get } from 'lodash';
+import {
+    RENT_AGE_SIZE,
+    DEFAULT_SELECTION,
+    GERMAN_TRANSLATIONS,
+} from '../utils/constants';
 import Link from 'next/link';
 
 const MapWithNoSSR = dynamic(() => import('../components/map/map-view'), {
@@ -20,7 +24,7 @@ const MapWithNoSSR = dynamic(() => import('../components/map/map-view'), {
 });
 
 export default function Page() {
-    const { query } = useRouter();
+    const { query, locale } = useRouter();
 
     const [userSelection, setUserSelection] =
         useState<CustomTypes.userSelection>(DEFAULT_SELECTION);
@@ -30,6 +34,13 @@ export default function Page() {
     const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(
         null
     );
+
+    const getLocalizedLabel = (label: string): string => {
+        if (locale === 'de') {
+            return get(GERMAN_TRANSLATIONS, label, label);
+        }
+        return label;
+    };
 
     useEffect(() => {
         if (
@@ -205,8 +216,6 @@ export default function Page() {
         // TODO: include prices from table, see https://github.com/ojas121/sueyourlandlord/issues/13
         sum *= selection.mandatory.size;
 
-        // TODO: add things from `selection` object
-
         return sum;
     }
 
@@ -269,32 +278,32 @@ export default function Page() {
                     <div className='absolute z-10 flex flex-col items-start justify-start p-4 bg-white rounded shadow top-3 right-3'>
                         {[
                             {
-                                label: 'Central Best',
+                                label: getLocalizedLabel('central best'),
                                 color: 'bg-red-500',
                                 number: '1',
                             },
                             {
-                                label: 'Central Good',
+                                label: getLocalizedLabel('central good'),
                                 color: 'bg-yellow-500',
                                 number: '2',
                             },
                             {
-                                label: 'Central Avg.',
+                                label: getLocalizedLabel('central avg.'),
                                 color: 'bg-blue-500',
                                 number: '3',
                             },
                             {
-                                label: 'Good',
+                                label: getLocalizedLabel('good'),
                                 color: 'bg-green-500',
                                 number: '4',
                             },
                             {
-                                label: 'Avg.',
+                                label: getLocalizedLabel('avg.'),
                                 color: 'bg-purple-500',
                                 number: '5',
                             },
                             {
-                                label: 'Unknown',
+                                label: getLocalizedLabel('unknown'),
                                 color: 'bg-gray-300',
                                 number: '0',
                             },
@@ -326,7 +335,7 @@ export default function Page() {
                                     'px-3 py-2 font-medium text-center rounded-md bg-red-600 text-red-50 cursor-pointer text-3xl'
                                 }
                             >
-                                🧑‍⚖️ &nbsp;Sue!
+                                🧑‍⚖️ &nbsp;{getLocalizedLabel('Sue!')}
                             </div>
                         </Link>
                     </div>
