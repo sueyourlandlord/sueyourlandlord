@@ -106,6 +106,118 @@ export default function FormSectionBuildingDetails(props: {
                 }
                 values={['gallery', 'no gallery']}
             />
+            <SelectionInput
+                label='elevator'
+                value={props.value.buildingDetails.elevator}
+                setValue={v =>
+                    props.setValue(
+                        defaultsDeep(
+                            { buildingDetails: { elevator: v } },
+                            props.value
+                        )
+                    )
+                }
+                values={['exists', 'missing']}
+            />
+            {props.value.buildingDetails.elevator === 'missing' && (
+                <>
+                    <SelectionInput
+                        label='dedicated green space'
+                        value={props.value.buildingDetails.dedicatedGreenSpace}
+                        setValue={v =>
+                            props.setValue(
+                                defaultsDeep(
+                                    {
+                                        buildingDetails: {
+                                            dedicatedGreenSpace: v,
+                                        },
+                                    },
+                                    props.value
+                                )
+                            )
+                        }
+                        values={['exists', 'missing']}
+                    />
+                </>
+            )}
+            {props.value.buildingDetails.elevator === 'missing' &&
+                props.value.buildingDetails.dedicatedGreenSpace ===
+                    'exists' && (
+                    <>
+                        <SelectionInput
+                            label='standalone'
+                            value={props.value.buildingDetails.standalone}
+                            setValue={v =>
+                                props.setValue(
+                                    defaultsDeep(
+                                        {
+                                            buildingDetails: {
+                                                standalone: v,
+                                            },
+                                        },
+                                        props.value
+                                    )
+                                )
+                            }
+                            values={[
+                                'standalone',
+                                'connected to other buildings',
+                            ]}
+                        />
+                        {props.value.buildingDetails.standalone ===
+                            'standalone' && (
+                            <>
+                                <SelectionInput
+                                    label='multiple entrances'
+                                    value={
+                                        props.value.buildingDetails
+                                            .multipleEntrances
+                                    }
+                                    setValue={v =>
+                                        props.setValue(
+                                            defaultsDeep(
+                                                {
+                                                    buildingDetails: {
+                                                        multipleEntrances: v,
+                                                    },
+                                                },
+                                                props.value
+                                            )
+                                        )
+                                    }
+                                    values={[
+                                        'at least 3 entrances',
+                                        'otherwise',
+                                    ]}
+                                />
+                            </>
+                        )}
+                        {props.value.buildingDetails.standalone ===
+                            'connected to other buildings' && (
+                            <>
+                                <SelectionInput
+                                    label='flat count'
+                                    value={
+                                        props.value.buildingDetails.flatCount
+                                    }
+                                    setValue={v =>
+                                        props.setValue(
+                                            defaultsDeep(
+                                                {
+                                                    buildingDetails: {
+                                                        flatCount: v,
+                                                    },
+                                                },
+                                                props.value
+                                            )
+                                        )
+                                    }
+                                    values={['>= 5 flats', '< flats']}
+                                />
+                            </>
+                        )}
+                    </>
+                )}
         </FormSection>
     );
 }

@@ -144,7 +144,24 @@ export default function Page() {
         }
         if (selection.buildingDetails.buildingHeight === '> 7 stories') {
             sum -= 0.42;
+        } else {
+            if (
+                selection.buildingDetails.elevator === 'missing' &&
+                selection.buildingDetails.dedicatedGreenSpace === 'exists'
+            ) {
+                if (
+                    (selection.buildingDetails.standalone === 'standalone' &&
+                        selection.buildingDetails.multipleEntrances ===
+                            'at least 3 entrances') ||
+                    (selection.buildingDetails.standalone ===
+                        'connected to other buildings' &&
+                        selection.buildingDetails.flatCount === '>= 5 flats')
+                ) {
+                    sum -= 0.62;
+                }
+            }
         }
+
         if (
             selection.buildingDetails.age === 'before 1930' ||
             selection.buildingDetails.age === '1930 - 1940' ||

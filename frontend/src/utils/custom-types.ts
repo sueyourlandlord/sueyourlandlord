@@ -22,6 +22,11 @@ namespace CustomTypes {
                 | 'video intercom or electric shutters'
                 | 'no/only other smart stuff';
             gallery: 'gallery' | 'no gallery';
+            elevator: 'exists' | 'missing';
+            dedicatedGreenSpace: 'exists' | 'missing';
+            standalone: 'standalone' | 'connected to other buildings';
+            multipleEntrances: 'at least 3 entrances' | 'otherwise';
+            flatCount: '>= 5 flats' | '< 5 flats';
         };
         bathroom: {
             bathType:

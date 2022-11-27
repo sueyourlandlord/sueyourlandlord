@@ -10,7 +10,7 @@ export default function FormSectionBathroom(props: {
     return (
         <FormSection label='bathroom'>
             <SelectionInput
-                label='bath type'
+                label='type'
                 value={props.value.bathroom.bathType}
                 setValue={v =>
                     props.setValue(
