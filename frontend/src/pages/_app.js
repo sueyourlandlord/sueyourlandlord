@@ -22,8 +22,7 @@ export default function App({ Component, pageProps }) {
             </Head>
             <div className='absolute top-0 right-0 z-50 overflow-hidden shadow rounded-bl-md flex-row-center'>
                 <Link
-                    href={router.pathname.replace('[locale]', 'de')}
-                    query={{ ...router.query, locale: 'de' }}
+                    href={router.asPath.replace('/en', '/de')}
                     className={
                         'w-10 h-10 leading-10 text-center ' +
                         (pageIsGerman
@@ -34,8 +33,7 @@ export default function App({ Component, pageProps }) {
                     de
                 </Link>
                 <Link
-                    href={router.pathname.replace('[locale]', 'en')}
-                    query={{ ...router.query, locale: 'en' }}
+                    href={router.asPath.replace('/de', '/en')}
                     className={
                         'w-10 h-10 leading-10 text-center ' +
                         (!pageIsGerman

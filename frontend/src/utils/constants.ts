@@ -2445,7 +2445,7 @@ export const GERMAN_TRANSLATIONS: { [key: string]: string } = {
     'Please enter size': 'Bitte Größe eingeben',
     'central best': 'zentral beste',
     'central good': 'zentral gut',
-    'central avg': 'zentral durchschnittlich',
+    'central avg.': 'zentral durchschnittlich',
     best: 'beste',
     good: 'gut',
     'avg.': 'durchschnittlich',
