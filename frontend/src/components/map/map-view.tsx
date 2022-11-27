@@ -1,23 +1,12 @@
-import {
-    MapContainer,
-    TileLayer,
-    Marker,
-    Tooltip,
-    GeoJSON,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import L, { LatLng } from 'leaflet';
-import {
-    AREA_QUALITY_POLYGONS,
-    REDUCATION_EXAMPLES,
-} from '../../utils/constants';
+import { AREA_QUALITY_POLYGONS } from '../../utils/constants';
 import { useMemo } from 'react';
 
 const MapView = (props: { lat: number; lon: number }) => {
-    const size = 27; // needs to correspond to font-size in globals.css for .mymarker
-
     const overlayOptFunc = (feature: any) => {
         switch (feature.properties._umap_options.color) {
             case 'Red':
@@ -53,27 +42,6 @@ const MapView = (props: { lat: number; lon: number }) => {
                 />
                 {/* @ts-ignore */}
                 <GeoJSON data={AREA_QUALITY_POLYGONS} style={overlayOptFunc} />
-                {REDUCATION_EXAMPLES.map(example => (
-                    <Marker
-                        key={example.location[0] + example.location[1]}
-                        position={
-                            new LatLng(example.location[0], example.location[1])
-                        }
-                        icon={L.divIcon({
-                            iconSize: [size, size],
-                            iconAnchor: [size / 2, size + 9],
-                            className: 'text-2xl',
-                            html: '🤑',
-                        })}
-                        title={'hi'}
-                    >
-                        <Tooltip direction={'auto'}>
-                            <s>{Math.round(example.org_rent)}</s>&nbsp;
-                            <b>{Math.round(example.new_rent)}</b>
-                        </Tooltip>
-                        {/* TODO: Change font to be standardised */}
-                    </Marker>
-                ))}
                 <Marker
                     position={new LatLng(props.lat, props.lon)}
                     draggable={false}
@@ -86,11 +54,3 @@ const MapView = (props: { lat: number; lon: number }) => {
 };
 
 export default MapView;
-
-/*
-
-<Tooltip key={example.location[0]+example.location[1]} position={new LatLng(example.location[0], example.location[1])} permanent>example.org_rent</Tooltip>
-           <Marker key={example.location[0]+example.location[1]} position={new LatLng(props.examples[0].location[0], props.examples[0].location[1])} icon={icon} title={example.org_rent}/>
-
-example.org_rent
- */

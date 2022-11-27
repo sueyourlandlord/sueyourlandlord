@@ -275,7 +275,7 @@ export default function Page() {
                             <MapWithNoSSR lat={coords?.lat} lon={coords.lon} />
                         </div>
                     )}
-                    <div className='absolute z-10 flex flex-col items-start justify-start p-4 bg-white rounded shadow top-3 right-3'>
+                    <div className='absolute z-10 flex flex-col items-start justify-start p-4 bg-white rounded shadow bottom-2 left-2'>
                         {[
                             {
                                 label: getLocalizedLabel('central best'),
@@ -332,7 +332,7 @@ export default function Page() {
                         <Link href='/sue'>
                             <div
                                 className={
-                                    'px-3 py-2 font-medium text-center rounded-md bg-red-600 text-red-50 cursor-pointer text-3xl'
+                                    'px-3 py-2 font-medium text-center rounded-md bg-rose-500 text-rose-50 cursor-pointer text-3xl'
                                 }
                             >
                                 🧑‍⚖️ &nbsp;{getLocalizedLabel('Sue!')}
