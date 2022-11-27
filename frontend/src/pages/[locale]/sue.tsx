@@ -2,6 +2,19 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+export async function getStaticPaths() {
+    return {
+        paths: [{ params: { locale: 'de' } }, { params: { locale: 'en' } }],
+        fallback: false,
+    };
+}
+
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
+
 export default function Page() {
     const router = useRouter();
     const pageIsGerman = router.query.locale === 'de';

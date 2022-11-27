@@ -24,6 +24,19 @@ const MapWithNoSSR = dynamic(() => import('../../components/map/map-view'), {
     ssr: false,
 });
 
+export async function getStaticPaths() {
+    return {
+        paths: [{ params: { locale: 'de' } }, { params: { locale: 'en' } }],
+        fallback: false,
+    };
+}
+
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
+
 export default function Page() {
     const [userSelection, setUserSelection] =
         useState<CustomTypes.userSelection>(DEFAULT_SELECTION);
