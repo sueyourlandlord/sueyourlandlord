@@ -13,8 +13,6 @@ export default function App({ Component, pageProps }) {
     const router = useRouter();
     const pageIsGerman = router.query.locale === 'de';
 
-    console.log({ router });
-
     return (
         <main className={`${rubik.variable} font-sans relative`}>
             <Head>

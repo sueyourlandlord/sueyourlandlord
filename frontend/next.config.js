@@ -10,4 +10,13 @@ module.exports = {
     images: {
         unoptimized: true,
     },
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/de',
+                permanent: true,
+            },
+        ];
+    },
 };
