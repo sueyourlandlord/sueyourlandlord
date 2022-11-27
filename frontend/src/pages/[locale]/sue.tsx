@@ -34,21 +34,34 @@ export default function Page() {
                         </>
                     )}
                 </h1>
-                <p className='px-4 pt-3 pb-2'>
+                <p className='px-4 pt-3 pb-2 text-center'>
                     {pageIsGerman && (
                         <>
                             Kontaktieren Sie Ihre örtliche
                             Mieter:innen&shy;vereini&shy;gung wie z.B. den{' '}
                             <span className='font-medium'>
-                                Mieter&shy;verein Muen&shy;chen e.V.
+                                DMB Mieter&shy;verein Muen&shy;chen e.V.
                             </span>{' '}
-                            (siehe{' '}
+                            (
                             <a
-                                href='https://www.mieterverein-muenchen.de/kontakt/beratungstermin'
+                                href='https://www.mieterverein-muenchen.de/'
                                 className='font-medium text-blue-600 underline break-all'
                                 target='_self'
                             >
-                                https://www.mieterverein-muenchen.de/kontakt/beratungstermin
+                                www.mieterverein-muenchen.de
+                            </a>
+                            ) oder den{' '}
+                            <span className='font-medium'>
+                                Mieter helfen Mietern, Münch&shy;ner
+                                Mieter&shy;verein e.V.
+                            </span>{' '}
+                            (
+                            <a
+                                href='https://www.mhmmuenchen.de/'
+                                className='font-medium text-blue-600 underline break-all'
+                                target='_self'
+                            >
+                                www.mhmmuenchen.de
                             </a>
                             )
                         </>
@@ -59,13 +72,26 @@ export default function Page() {
                             <span className='font-medium'>
                                 Mieter&shy;verein Muen&shy;chen e.V.
                             </span>{' '}
-                            (see{' '}
+                            (
                             <a
-                                href='https://www.mieterverein-muenchen.de/kontakt/beratungstermin'
+                                href='https://www.mieterverein-muenchen.de/'
                                 className='font-medium text-blue-600 underline break-all'
                                 target='_self'
                             >
-                                https://www.mieterverein-muenchen.de/kontakt/beratungstermin
+                                www.mieterverein-muenchen.de
+                            </a>
+                            ) or{' '}
+                            <span className='font-medium'>
+                                Mieter helfen Mietern, Münch&shy;ner
+                                Mieter&shy;verein e.V.
+                            </span>{' '}
+                            (
+                            <a
+                                href='https://www.mhmmuenchen.de/'
+                                className='font-medium text-blue-600 underline break-all'
+                                target='_self'
+                            >
+                                www.mhmmuenchen.de
                             </a>
                             )
                         </>
