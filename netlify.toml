@@ -6,6 +6,6 @@
 [[redirects]]
   from = "/"
   to = "/de"
-  status = 200
+  status = 301
   force = true
   headers = {X-From = "Netlify"}
