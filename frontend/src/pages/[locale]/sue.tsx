@@ -19,17 +19,17 @@ export default function Page() {
                 <h1 className='w-full pt-4 my-3 text-3xl text-center font-regular'>
                     {pageIsGerman && (
                         <>
-                            You Can{' '}
+                            Sie können Ihre{' '}
                             <span className='font-bold'>
-                                Sue Your Landlord!
+                                Vermieter:innen verklagen!
                             </span>
                         </>
                     )}
                     {!pageIsGerman && (
                         <>
-                            Sie können Ihre{' '}
+                            You Can{' '}
                             <span className='font-bold'>
-                                Vermieter:innen verklagen!
+                                Sue Your Landlord!
                             </span>
                         </>
                     )}

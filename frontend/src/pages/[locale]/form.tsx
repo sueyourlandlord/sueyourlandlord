@@ -329,7 +329,7 @@ export default function Page() {
                     </div>
 
                     <div className='absolute bottom-3 right-3'>
-                        <Link href='/sue'>
+                        <Link href={`/${pageIsGerman ? 'de' : 'en'}/sue`}>
                             <div
                                 className={
                                     'px-3 py-2 font-medium text-center rounded-md bg-rose-500 text-rose-50 cursor-pointer text-3xl'
