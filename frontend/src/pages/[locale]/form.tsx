@@ -18,6 +18,7 @@ import {
     GERMAN_TRANSLATIONS,
 } from '../../utils/constants';
 import Link from 'next/link';
+import { VARIATION_MAXIMUM } from '../../utils/constants';
 
 const MapWithNoSSR = dynamic(() => import('../../components/map/map-view'), {
     ssr: false,
@@ -72,18 +73,27 @@ export default function Page() {
             return null;
         }
 
-        var result_rent = filter(RENT_AGE_SIZE, function (o) {
+        const base_rent = filter(RENT_AGE_SIZE, function (o) {
             return (
                 selection.mandatory.size !== null &&
                 o.size_from <= selection.mandatory.size &&
                 selection.mandatory.size <= o.size_to
             );
         });
-        var last_result = result_rent[result_rent.length - 1];
-        if (!last_result) {
+        const max_variance = filter(VARIATION_MAXIMUM, function (o) {
+            return (
+                selection.mandatory.size !== null &&
+                o.size_from <= selection.mandatory.size &&
+                selection.mandatory.size <= o.size_to
+            );
+        });
+        if (base_rent.length === 0 || max_variance.length === 0) {
             return null;
         }
-        sum = last_result.prices[selection.buildingDetails.age];
+
+        sum =
+            base_rent[0].prices[selection.buildingDetails.age] +
+            max_variance[0].prices[selection.buildingDetails.age];
 
         if (zoneNumber === '1') {
             sum += 2.67; // central best
